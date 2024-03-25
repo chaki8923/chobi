@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import {exec} from 'child_process';
+import {execSync} from 'child_process';
 
 export function activate(context: vscode.ExtensionContext) {
   console.log('Congratulations, your extension "hoge" is now active!');
@@ -15,38 +15,27 @@ export function activate(context: vscode.ExtensionContext) {
     let selectedText = editor.document.getText(selection);
 
     let command = 'echo "' + selectedText + '" > ~/.rbprettier.rb';
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            vscode.window.showErrorMessage(`Error: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            vscode.window.showErrorMessage(`Command stderr: ${stderr}`);
-            return;
-        }
-    });
-
+    try {
+      execSync(command);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        vscode.window.showErrorMessage(`Error: ${error.message}`);
+      }
+      return;
+    }
 
     command = 'prettier --plugin=@prettier/plugin-ruby ~/.rbprettier.rb';
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            vscode.window.showErrorMessage(`Error: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            vscode.window.showErrorMessage(`Command stderr: ${stderr}`);
-            return;
-        }
-
-        const commandOutput: string = stdout;
-
-        if (editor === undefined) {
-          return;
-        }
-        editor.edit(builder => {
-          builder.replace(selection, commandOutput);
-        });
-    });
+    try {
+      const commandOutput = execSync(command).toString();
+      editor.edit(builder => {
+        builder.replace(selection, commandOutput);
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        vscode.window.showErrorMessage(`Error: ${error.message}`);
+      }
+      return;
+    }
   });
 
 
@@ -54,3 +43,4 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {}
+
