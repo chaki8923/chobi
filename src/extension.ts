@@ -2,10 +2,7 @@ import * as vscode from 'vscode';
 import {execSync} from 'child_process';
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Congratulations, your extension "hoge" is now active!');
-
-
-  let disposable = vscode.commands.registerCommand('hoge.helloWorld', () => {
+  let disposable = vscode.commands.registerCommand('pret.run', () => {
 
     let editor = vscode.window.activeTextEditor;
     if (editor === undefined) {
@@ -37,7 +34,6 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
   });
-
 
   context.subscriptions.push(disposable);
 }

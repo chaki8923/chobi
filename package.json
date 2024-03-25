@@ -1,6 +1,6 @@
 {
-  "name": "hoge",
-  "displayName": "hoge",
+  "name": "pret",
+  "displayName": "pret",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -14,7 +14,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "hoge.helloWorld",
+        "command": "pret.run",
         "title": "pret"
       }
     ]
