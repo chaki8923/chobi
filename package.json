@@ -15,7 +15,7 @@
     "commands": [
       {
         "command": "hoge.helloWorld",
-        "title": "Hello World"
+        "title": "pret"
       }
     ]
   },
