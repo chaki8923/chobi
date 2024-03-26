@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
 
-    command = 'prettier --plugin=@prettier/plugin-ruby ~/.rbprettier.rb';
+    command = 'cd ~ && prettier --plugin=@prettier/plugin-ruby ~/.rbprettier.rb';
     try {
       const commandOutput = execSync(command).toString();
       editor.edit(builder => {
