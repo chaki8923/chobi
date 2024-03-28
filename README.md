@@ -1,9 +1,10 @@
-{: align="center"}
+<p align="center">
 ![alt text](chobi.jpg)
-
+</p>
 <p align="center">
 <img src="https://img.shields.io/badge/TS-Typescript-007ACC.svg?logo=typescript&style=social">
 </p>
+
 ## Welcome to Chobi!
 
 HEY!
