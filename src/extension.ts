@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import {execSync} from 'child_process';
 
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand('pret.run', () => {
+  let disposable = vscode.commands.registerCommand('chobi', () => {
 
     let editor = vscode.window.activeTextEditor;
     if (editor === undefined) {
@@ -11,7 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
     let selection = editor.selection;
     let selectedText = editor.document.getText(selection);
 
-    let command = 'echo "' + selectedText + '" > ~/.rbprettier.rb';
+    let command = 'echo "' + convertDoubleToSingleQuotes(selectedText) + '" > ~/.rbprettier.rb';
     try {
       execSync(command);
     } catch (error: unknown) {
@@ -21,15 +21,15 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
 
-    command = 'cd ~ && prettier --plugin=@prettier/plugin-ruby ~/.rbprettier.rb';
+    command = "cd ~ && prettier --plugin=@prettier/plugin-ruby ~/.rbprettier.rb"
     try {
-      const commandOutput = execSync(command).toString();
+        const commandOutput = execSync(command).toString();
       editor.edit(builder => {
-        builder.replace(selection, commandOutput);
+        builder.replace(selection, convertDoubleToDoubleQuotes(commandOutput));
       });
     } catch (error: unknown) {
       if (error instanceof Error) {
-        vscode.window.showErrorMessage(`Error: ${error.message}`);
+        vscode.window.showErrorMessage(`ChobiError👎: ${error.message}`);
       }
       return;
     }
@@ -37,5 +37,14 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(disposable);
 }
+function convertDoubleToSingleQuotes(input: string): string {
+  // ダブルクオーテーションをシングルクオーテーションに置換する
+  return input.replace(/"/g, "'");
+}
+function convertDoubleToDoubleQuotes(input: string): string {
+  // 逆にね
+  return input.replace(/'/g, '"');
+}
+
 
 export function deactivate() {}
