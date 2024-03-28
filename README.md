@@ -1,10 +1,9 @@
-<p align="center">
-
+{: align="center"}
 ![alt text](chobi.jpg)
+
+<p align="center">
 <img src="https://img.shields.io/badge/TS-Typescript-007ACC.svg?logo=typescript&style=social">
 </p>
-
-
 ## Welcome to Chobi!
 
 HEY!
@@ -59,6 +58,7 @@ This project is licensed under the [MIT License](LICENSE).
 - 「VSIXからのインストール」を選択
 
 ![alt text](<スクリーンショット 2024-03-28 16.41.49.png>)
+
 - インストールできれば他のプロジェクトでも利用可能
 
 ## 使用方法
