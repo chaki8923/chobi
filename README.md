@@ -38,10 +38,12 @@ This project is licensed under the [MIT License](LICENSE).
 
 # 環境構築(日本人用)
 
-## prettierインストール
-
+## 必要なもののインストール
+- npm install
+- npm install -g generator-code
 - npm install --global prettier @prettier/plugin-ruby
 - gem install bundler prettier_print syntax_tree syntax_tree-haml syntax_tree-rbs
+- npx vsce package
 
 ## 「.prettierrc.json」をホームディレクトリへ移動
 
