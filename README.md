@@ -72,6 +72,10 @@ This project is licensed under the [MIT License](LICENSE).
 - 「chobi」と打って出てきたコマンドを実行
   ![alt text](<スクリーンショット 2024-03-28 16.51.56.png>)
 
+## 注意
+- 部分フォーマットなので前後の文脈は読み取りません。関数を選択する場合は「def」~「end」まで、
+ハッシュなら「{」~「}」まで選択しないとエラーになります。
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
