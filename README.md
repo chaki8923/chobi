@@ -48,7 +48,7 @@ This project is licensed under the [MIT License](LICENSE).
 - npx vsce package
 
 ## 「.prettierrc.json」をホームディレクトリへ移動
-
+- 再度chobiのルートディレクトリへ移動
 - cp .prettierrc.json ~/
 
 ## 確認
