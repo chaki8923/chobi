@@ -51,11 +51,6 @@ This project is licensed under the [MIT License](LICENSE).
 - 再度chobiのルートディレクトリへ移動
 - cp .prettierrc.json ~/
 
-## 確認
-
-- ホームディレクトリに適当なrbファイル作成
-- 「prettier --plugin=@prettier/plugin-ruby ファイル名」　を実行
-- エラーなくフォーマットされているか確認できればOK
 
 ## 拡張機能をインストール
 
