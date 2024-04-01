@@ -41,9 +41,10 @@ This project is licensed under the [MIT License](LICENSE).
 ## 必要なもののインストール
 - npm install
 - npm install -g generator-code
-- npm install --global prettier @prettier/plugin-ruby
-- ここまで来たら下のinstall時にエラーになるのでReadmeの画像を全て削除♫
+- ルートディレクトリへ移動「cd ~」
+- npm install --save-dev prettier @prettier/plugin-ruby
 - gem install bundler prettier_print syntax_tree syntax_tree-haml syntax_tree-rbs
+- なんかinstall時にエラーになったらReadmeの画像を全て削除して再度install
 - npx vsce package
 
 ## 「.prettierrc.json」をホームディレクトリへ移動
