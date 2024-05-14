@@ -32,10 +32,6 @@
         "title": "ojump"
       },
       {
-        "command": "mjump",
-        "title": "mjump"
-      },
-      {
         "command": "sjump",
         "title": "sjump"
       }
@@ -43,18 +39,13 @@
     "keybindings": [
       {
           "command": "chobi",
-          "key": "ctrl+shift+f",
-          "mac": "cmd+shift+f"
+          "key": "ctrl+shift+c",
+          "mac": "cmd+shift+c"
       },
       {
           "command": "chobispec",
           "key": "ctrl+shift+r",
           "mac": "cmd+shift+r"
-      },
-      {
-          "command": "mjump",
-          "key": "ctrl+shift+m",
-          "mac": "cmd+shift+m"
       },
       {
           "command": "ojump",
