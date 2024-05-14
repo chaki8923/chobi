@@ -76,7 +76,12 @@ export function activate(context: vscode.ExtensionContext) {
     const currentFilePath = editor.document.fileName;
     const currentFileName = path.basename(currentFilePath);
     const jumpFileName = currentFileName.replace("_spec", "");
-    const fileName = `apps/api/app/controllers/${jumpFileName}`; // アクティブにしたいファイルの名前
+    let fileName = ""
+    if(currentFileName.includes("controller")){
+      fileName = `apps/api/app/controllers/${jumpFileName}`; // アクティブにしたいファイルの名前
+    }else{
+      fileName = `apps/api/app/models/${jumpFileName}`; // アクティブにしたいファイルの名前
+    }
 
     const filePath = vscode.Uri.file(
       path.join(vscode.workspace.rootPath || "", fileName),
@@ -100,10 +105,10 @@ export function activate(context: vscode.ExtensionContext) {
         "controller.rb",
         "controller_spec.rb",
       );
-    }else if(currentFileName.includes("model")){
+    }else {
       jumpFileName = currentFileName.replace(
-        "model.rb",
-        "model_spec.rb",
+        ".rb",
+        "_spec.rb",
       );
     }
     const fileName = `apps/api/spec/controllers/${jumpFileName}`; // アクティブにしたいファイルの名前
