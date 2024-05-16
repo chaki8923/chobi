@@ -177,7 +177,7 @@ function getFailContent(
           <title>${filename}</title>
       </head>
       <body>
-          <h1>ぴえん🥲</h1>
+          <h1>テストNG🥲</h1>
           <p>実行したテスト => 「 ${examples} 」</p>
           <p>成功 => 「 ${success} 」</p>
           <p>失敗 => 「 ${failures} 」</p>
