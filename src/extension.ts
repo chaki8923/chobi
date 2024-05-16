@@ -72,7 +72,7 @@ export function activate(context: vscode.ExtensionContext) {
               {}, // Webview options. More on these later.
             );
             panel.webview.html = getFailContent(
-              stderr,
+              stdout,
               examples,
               success,
               failures,
