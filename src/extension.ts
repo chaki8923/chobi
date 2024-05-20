@@ -157,7 +157,9 @@ export function activate(context: vscode.ExtensionContext) {
     try {
       const params = parseRubyHash(text);
       const testCode = generateRSpecTestCode(params);
-      vscode.env.clipboard.writeText(testCode);
+      editor.edit((builder) => {
+        builder.replace(selection, testCode);
+      });
       vscode.window.showInformationMessage('RSpec test code generated and copied to clipboard!');
     } catch (error) {
       vscode.window.showErrorMessage('Failed to parse the selected text as Ruby hash.');
@@ -217,9 +219,9 @@ function parseRubyHash(rubyHash: string): object {
 }
 
 function generateRSpecTestCode(params: object): string {
-  return `it "ログインできる事" do
+  return `it "test-name" do
  params = ${JSON.stringify(params, null, 2)}
- post "/admin_user/login/", params: params
+ post "", params: params
  expect(response.status).to eq 200
 end`;
 }
