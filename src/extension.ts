@@ -145,11 +145,31 @@ export function activate(context: vscode.ExtensionContext) {
     });
   });
 
+  let gene = vscode.commands.registerCommand('gene', () => {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      return;
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+    
+    try {
+      const params = parseRubyHash(text);
+      const testCode = generateRSpecTestCode(params);
+      vscode.env.clipboard.writeText(testCode);
+      vscode.window.showInformationMessage('RSpec test code generated and copied to clipboard!');
+    } catch (error) {
+      vscode.window.showErrorMessage('Failed to parse the selected text as Ruby hash.');
+    }
+  });
+
   context.subscriptions.push(
     prettier,
     rspec,
     controller_or_model_jump,
     spec_jump,
+    gene
   );
 }
 function convertDoubleToSingleQuotes(input: string): string {
@@ -187,6 +207,21 @@ function getFailContent(
       </body>
       </html>
   `;
+}
+function parseRubyHash(rubyHash: string): object {
+  const jsonString = rubyHash
+    .replace(/=>/g, ':') // Replace => with :
+    .replace(/("[^"]+":)\s*"(\d+)"/g, '$1$2') // Remove quotes around numeric values
+    .replace(/"(\d+)"/g, '$1'); // Remove remaining quotes around numeric values
+  return JSON.parse(jsonString);
+}
+
+function generateRSpecTestCode(params: object): string {
+  return `it "ログインできる事" do
+ params = ${JSON.stringify(params, null, 2)}
+ post "/admin_user/login/", params: params
+ expect(response.status).to eq 200
+end`;
 }
 
 export function deactivate() {}

@@ -14,7 +14,8 @@
     "chobispec",
     "ojump",
     "sjump",
-    "mjump"
+    "mjump",
+    "gene"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -34,6 +35,10 @@
       {
         "command": "sjump",
         "title": "sjump"
+      },
+      {
+        "command": "gene",
+        "title": "gene"
       }
     ],
     "keybindings": [
@@ -56,6 +61,11 @@
           "command": "sjump",
           "key": "ctrl+shift+s",
           "mac": "cmd+shift+s"
+      },
+      {
+          "command": "gene",
+          "key": "ctrl+shift+g",
+          "mac": "cmd+shift+g"
       }
   ]
   },
